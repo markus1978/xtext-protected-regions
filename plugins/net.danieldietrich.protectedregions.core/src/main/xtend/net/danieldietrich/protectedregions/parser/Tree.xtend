@@ -74,7 +74,7 @@ abstract class Tree<T> {
 	def Tree<T> root() { if (isRoot) this else _parent.root }
 	
 	override toString() { toString(0) }
-	def protected String toString(int depth)
+	def public String toString(int depth)
 	
 }
 
@@ -92,7 +92,7 @@ class Node<T> extends Tree<T> {
 		child
 	}
 	
-	override protected toString(int depth) {
+	override public toString(int depth) {
 		val indent = indent(depth)
 		indent + id +"(\n"+ _children.map[Tree<T> child | child.toString(depth+1)].reduce[l,r | l +",\n"+ r] +"\n"+ indent +")"
 	}
@@ -108,7 +108,7 @@ class Leaf<T> extends Tree<T> {
 		this._value = value
 	}
 	
-	override protected toString(int depth) {
+	override public toString(int depth) {
 		val indent = indent(depth)
 		indent + id +"("+ _value.toString.replaceAll("\\s+", " ") +")"
 	}
@@ -130,7 +130,7 @@ class NodeLink<T> extends Node<T> {
 		ref.add(child)
 	}
 
-	override protected toString(int depth) {
+	override public toString(int depth) {
 		val indent = indent(depth)
 		indent + id
 	}
@@ -148,7 +148,7 @@ class LeafLink<T> extends Leaf<T> {
 
 	override getValue() { ref.value }
 
-	override protected toString(int depth) {
+	override public toString(int depth) {
 		val indent = indent(depth)
 		indent + id
 	}

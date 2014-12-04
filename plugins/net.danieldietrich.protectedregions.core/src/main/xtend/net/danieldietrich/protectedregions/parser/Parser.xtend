@@ -25,7 +25,7 @@ import static net.danieldietrich.protectedregions.util.Strings.*
 		output
 	}
 	
-	def private parse(Node<Element> model, String input, Node<String> output, int startIndex) {
+	def private int parse(Node<Element> model, String input, Node<String> output, int startIndex) {
 		
 		val end = model.end
 		val children = model.nodes // it is specific for the model that the children are of type Node (vice versa)
@@ -63,8 +63,7 @@ import static net.danieldietrich.protectedregions.util.Strings.*
 			
 		} while (!finished)
 		
-		index
-		
+		return index	
 	}
 	
 	/** Returns the leaf whose Element occurs first in input (starting the search at given index). */

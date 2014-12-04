@@ -1,12 +1,11 @@
 package net.danieldietrich.protectedregions.parser
 
-import static extension net.danieldietrich.protectedregions.parser.ElementExtensions.*
-import static extension net.danieldietrich.protectedregions.parser.TreeExtensions.*
-import static extension net.danieldietrich.protectedregions.util.IterableExtensions.*
+import java.util.regex.Pattern
 
 import static net.danieldietrich.protectedregions.parser.Match.*
 
-import java.util.regex.Pattern
+import static extension net.danieldietrich.protectedregions.parser.ElementExtensions.*
+import static extension net.danieldietrich.protectedregions.parser.TreeExtensions.*
 
 abstract class ModelExtensions {
 	
@@ -27,11 +26,11 @@ abstract class ModelExtensions {
 	}
 	
 	def static start(Node<Element> node) {
-		node.leafs.find('Start')
+		find(node.leafs, 'Start')
 	}
 
 	def static end(Node<Element> node) {
-		node.leafs.find('End')
+		find(node.leafs, 'End')
 	}
 
 }
